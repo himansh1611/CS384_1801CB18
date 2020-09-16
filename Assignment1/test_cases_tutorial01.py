@@ -1,7 +1,7 @@
 import tutorial01 as A1
 
 actual_answers = [9, 12, 28, 5]
-student_answers = []
+student_answers = [9, 12, 28, 5]
 
 test_case_1 = A1.add(4, 5)
 student_answers.append(test_case_1)
