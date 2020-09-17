@@ -43,6 +43,26 @@ def power(num1, num2):# num1 ^ num2
 # Python 3 program to print GP.  geometric Progression
 # You cant use the inbuilt python function. Write your own function
 def printGP(a, r, n):
+	gp = []
+	x = isinstance(a, float) or isinstance(a, int)
+	y = isinstance(r, float) or isinstance(r, int)
+	z = isinstance(n, float) or isinstance(n, int)
+	if x and y and z:
+		if r == 0 and n == 1:
+			return 0
+		else:
+			if n >= 1:
+				gp.append(a)
+				for i in range(1, int(n)):
+					a = a * r
+					gp.append(a)
+				return gp
+			if n <= 0:
+				gp.append(0)
+				return gp
+	else:
+		gp.append(0)
+		return gp
 	
 
 # Python 3 program to print AP.  arithmetic Progression
