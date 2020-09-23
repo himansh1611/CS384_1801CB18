@@ -1,5 +1,23 @@
 # All decimal 3 places
 
+# Function to compute Standard deviation. You cant use Python functions
+def standard_deviation(first_list):
+    # Standard deviation Logic
+
+    for i in range(len(first_list)):
+        if isinstance(first_list[i], str):
+            return 0
+    else:
+        mean_for_stdv = mean(first_list)
+        stdv_sum = 0
+        for x in first_list:
+            stdv_sum += (x - mean_for_stdv) ** 2
+
+        stdv = stdv_sum / len(first_list)
+
+        standard_deviation_value = sqrt(stdv)
+        return standard_deviation_value
+
 # Function to compute variance. You cant use Python functions
 def variance(first_list):
     # variance Logic
