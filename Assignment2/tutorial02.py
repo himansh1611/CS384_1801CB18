@@ -1,5 +1,24 @@
 # All decimal 3 places
 
+# Function to compute Kurtosis. You cant use Python functions
+def kurtosis(first_list):
+    # Kurtosis Logic
+    for i in range(len(first_list)):
+        if isinstance(first_list[i], str):
+            return 0
+    else:
+
+        sigma = standard_deviation(first_list)
+
+        mean = mean(first_list)
+        kurtosis_sum = 0
+        for x in first_list:
+            kurtosis_sum += ((x - mean) / sigma) ** 4
+
+        kurtosis_value = kurtosis_sum / len(first_list)
+
+        return kurtosis_value
+
 # Function to compute Skewness. You cant use Python functions
 def skewness(first_list):
     # Skewness Logic
