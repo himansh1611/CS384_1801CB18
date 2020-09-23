@@ -1,5 +1,21 @@
 # All decimal 3 places
 
+# Function to compute Skewness. You cant use Python functions
+def skewness(first_list):
+    # Skewness Logic
+    for i in range(len(first_list)):
+        if isinstance(first_list[i], str):
+            return 0
+    else:
+        sigma = standard_deviation(first_list)
+        mean = mean(first_list)
+        skew_sum = 0
+        for x in first_list:
+            skew_sum += ((x - mean) / sigma) ** 3
+        skewness_value = skew_sum / len(first_list)
+
+        return skewness_value
+
 # Function to compute Standard deviation. You cant use Python functions
 def standard_deviation(first_list):
     # Standard deviation Logic
