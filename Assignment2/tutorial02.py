@@ -1,5 +1,20 @@
 # All decimal 3 places
 
+def median(first_list):
+    # median Logic
+
+    for i in range(n):
+        if isinstance(sorted_list[i], str):
+            return 0
+    else:
+        sorted_list = sorting(first_list)
+        n = len(sorted_list)
+        if len(sorted_list) % 2 == 1:
+            median_value = sorted_list[len(sorted_list) // 2]
+        else:
+            median_value = (sorted_list[len(sorted_list) // 2] + sorted_list[len(sorted_list) // 2 - 1]) / 2
+        return median_value
+
 def mae(first_list, second_list):
     # mae Logic
     for i in range(len(first_list)):
