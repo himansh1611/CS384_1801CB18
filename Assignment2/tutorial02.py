@@ -1,5 +1,26 @@
 # All decimal 3 places
 
+# Function to compute NSE. You cant use Python functions
+def nse(first_list, second_list):
+    # nse Logic
+    for i in range(len(first_list)):
+        if isinstance(first_list[i], str):
+            return 0
+    for i in range(len(second_list)):
+        if isinstance(second_list[i], str):
+            return 0
+    if len(first_list) != len(second_list):
+        return 0
+    else:
+        x = []
+        y = []
+        mean_x = mean(first_list)
+        for i in range(len(first_list)):
+            x.append((first_list[i] - second_list[i]) ** 2)
+            y.append((first_list[i] - mean_x) ** 2)
+        nse_value = (1 - (summation(x) / summation(y)))
+    return nse_value
+
 # Function to compute RMSE. You cant use Python functions
 def rmse(first_list, second_list):
     # RMSE Logic
