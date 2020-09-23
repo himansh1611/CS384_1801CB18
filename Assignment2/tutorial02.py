@@ -1,5 +1,20 @@
 # All decimal 3 places
 
+# Function to compute variance. You cant use Python functions
+def variance(first_list):
+    # variance Logic
+
+    for i in range(len(first_list)):
+        if isinstance(first_list[i], str):
+            return 0
+    else:
+        mean_for_var = mean(first_list)
+        var_sum = 0
+        for x in first_list:
+            var_sum += (x - mean_for_var) ** 2
+        variance_value = var_sum / len(first_list)
+        return variance_value
+
 def median(first_list):
     # median Logic
 
