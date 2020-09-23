@@ -1,5 +1,11 @@
 # All decimal 3 places
 
+# Function to compute RMSE. You cant use Python functions
+def rmse(first_list, second_list):
+    # RMSE Logic
+    rmse_value = sqrt(mse(first_list, second_list))
+    return rmse_value
+
 # Function to compute mse. You cant use Python functions
 def mse(first_list, second_list):
     # mse Logic
