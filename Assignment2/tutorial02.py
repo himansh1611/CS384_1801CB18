@@ -1,5 +1,30 @@
 # All decimal 3 places
 
+# Function to compute Pearson correlation coefficient. You cant use Python functions
+def pcc(first_list, second_list):
+    # nse Logic
+    mean_x = mean(first_list)
+    mean_y = mean(second_list)
+    xy, x, y = [], [], []
+    if len(first_list) == len(second_list):
+        for i in range(len(first_list)):
+            if isinstance(first_list[i], (int, float)) and isinstance(second_list[i], (int, float)):
+                xy.append((first_list[i] - mean_x) * (second_list[i] - mean_y))
+                x.append((first_list[i] - mean_x) ** 2)
+                y.append((second_list[i] - mean_y) ** 2)
+            else:
+                return 0
+
+    else:
+        return 0
+    xy_sum, x_sum, y_sum = summation(xy), summation(x), summation(y)
+    pcc_value = 0
+    if x_sum == 0 or y_sum == 0:
+        return 0
+    else:
+        pcc_value = xy_sum / (sqrt(x_sum * y_sum))
+    return pcc_value
+
 # Function to compute NSE. You cant use Python functions
 def nse(first_list, second_list):
     # nse Logic
