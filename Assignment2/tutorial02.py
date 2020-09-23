@@ -1,6 +1,18 @@
 # All decimal 3 places
 
+# Function to compute mean
+def mean(first_list):
+    # mean Logic 
 
+    for i in range(len(first_list)):
+        if isinstance(first_list[i], str):
+            mean_value = 0
+            break
+    else:
+        mean_value = 0
+        sum = summation(first_list)
+        mean_value = sum / len(first_list)
+    return mean_value
 
 
 
