@@ -1,5 +1,22 @@
 # All decimal 3 places
 
+def mae(first_list, second_list):
+    # mae Logic
+    for i in range(len(first_list)):
+        if isinstance(first_list[i], str):
+            return 0
+    for i in range(len(second_list)):
+        if isinstance(second_list[i], str):
+            return 0
+    if len(first_list) != len(second_list):
+        return 0
+    else:
+        x = []
+        for i in range(len(first_list)):
+            x.append(abs(first_list[i] - second_list[i]))
+        mae_value = (summation(x) / len(first_list))
+    return mae_value
+
 # Function to compute Pearson correlation coefficient. You cant use Python functions
 def pcc(first_list, second_list):
     # nse Logic
