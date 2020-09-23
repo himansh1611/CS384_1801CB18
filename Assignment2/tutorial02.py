@@ -1,5 +1,21 @@
 # All decimal 3 places
 
+def sorting(first_list):
+    # Sorting Logic
+    for i in range(len(first_list)):
+        if isinstance(first_list[i], str):
+            return 0
+    else:
+        sorted_list=[]
+        for passnum in range(len(first_list) - 1, 0, -1):
+            for i in range(passnum):
+                if first_list[i] > first_list[i + 1]:
+                    temp = first_list[i]
+                    first_list[i] = first_list[i + 1]
+                    first_list[i + 1] = temp
+        sorted_list=first_list
+        return sorted_list
+
 # Function to compute Kurtosis. You cant use Python functions
 def kurtosis(first_list):
     # Kurtosis Logic
