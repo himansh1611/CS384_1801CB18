@@ -126,7 +126,48 @@ def course():
 
 def country():
     # Read csv and process
-    pass
+    if (os.path.exists(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics")):
+        shutil.rmtree(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics")
+    else:
+        pass
+    with open('studentinfo_cs384.csv') as f:
+        reader = csv.DictReader(f)
+        lines = [dict(row) for row in reader]
+
+    if (os.path.exists(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics/country")):
+        pass
+    else:
+        os.makedirs(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics/country")
+
+    base_path = r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics/country"
+    for row in lines:
+        if (row["country"] != ""):
+            cinfo = row["country"]
+            if (os.path.exists(os.path.join(base_path, cinfo.lower() + ".csv"))):
+                with open(os.path.join(base_path, cinfo.lower() + ".csv"), "a+") as file:
+                    header = ["id", "full_name", "country", "email", "gender", "dob", "blood_group", "state"]
+                    writer = csv.DictWriter(file, fieldnames=header)
+                    writer.writerow(row)
+            else:
+                with open(os.path.join(base_path, cinfo.lower() + ".csv"), "a+") as file:
+                    header = ["id", "full_name", "country", "email", "gender", "dob", "blood_group", "state"]
+                    writer = csv.DictWriter(file, fieldnames=header)
+                    writer.writeheader()
+                    writer.writerow(row)
+        else:
+            cinfo = "misc"
+            if (os.path.exists(os.path.join(base_path, cinfo.lower() + ".csv"))):
+                with open(os.path.join(base_path, cinfo.lower() + ".csv"), "a+") as file:
+                    header = ["id", "full_name", "country", "email", "gender", "dob", "blood_group", "state"]
+                    writer = csv.DictWriter(file, fieldnames=header)
+                    writer.writerow(row)
+            else:
+                with open(os.path.join(base_path, cinfo.lower() + ".csv"), "a+") as file:
+                    header = ["id", "full_name", "country", "email", "gender", "dob", "blood_group", "state"]
+                    writer = csv.DictWriter(file, fieldnames=header)
+                    writer.writeheader()
+                    writer.writerow(row)
+    
 
 
 def email_domain_extract():
