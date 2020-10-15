@@ -388,6 +388,47 @@ def dob():
 
 def state():
     # Read csv and process
+    if (os.path.exists(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics")):
+        shutil.rmtree(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics")
+    else:
+        pass
+    with open('studentinfo_cs384.csv') as f:
+        reader = csv.DictReader(f)
+        lines = [dict(row) for row in reader]
+
+    if (os.path.exists(r"C:\Users\admin\CS384_1801CB18\Assignment3analytics/state")):
+        pass
+    else:
+        os.makedirs(r"C:\Users\admin\CS384_1801CB18\Assignment3analytics/state")
+
+    base_path = r"C:\Users\admin\CS384_1801CB18\Assignment3/analytics/state"
+    for row in lines:
+        if (row["state"] != ""):
+            sinfo = row["state"]
+            if (os.path.exists(os.path.join(base_path, sinfo.lower() + ".csv"))):
+                with open(os.path.join(base_path, sinfo.lower() + ".csv"), "a+") as file:
+                    header = ["id", "full_name", "country", "email", "gender", "dob", "blood_group", "state"]
+                    writer = csv.DictWriter(file, fieldnames=header)
+                    writer.writerow(row)
+            else:
+                with open(os.path.join(base_path, sinfo.lower() + ".csv"), "a+") as file:
+                    header = ["id", "full_name", "country", "email", "gender", "dob", "blood_group", "state"]
+                    writer = csv.DictWriter(file, fieldnames=header)
+                    writer.writeheader()
+                    writer.writerow(row)
+        else:
+            ginfo = "misc"
+            if (os.path.exists(os.path.join(base_path, sinfo.lower() + ".csv"))):
+                with open(os.path.join(base_path, sinfo.lower() + ".csv"), "a+") as file:
+                    header = ["id", "full_name", "country", "email", "gender", "dob", "blood_group", "state"]
+                    writer = csv.DictWriter(file, fieldnames=header)
+                    writer.writerow(row)
+            else:
+                with open(os.path.join(base_path, sinfo.lower() + ".csv"), "a+") as file:
+                    header = ["id", "full_name", "country", "email", "gender", "dob", "blood_group", "state"]
+                    writer = csv.DictWriter(file, fieldnames=header)
+                    writer.writeheader()
+                    writer.writerow(row)
     pass
 
 
