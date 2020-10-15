@@ -481,4 +481,64 @@ def blood_group():
 # Create the new file here and also sort it in this function only.
 def new_file_sort():
     # Read csv and process
+    if (os.path.exists(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics")):
+        shutil.rmtree(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics")
+    else:
+        pass
+    with open('studentinfo_cs384.csv') as f:
+        reader = csv.DictReader(f)
+        lines = [dict(row) for row in reader]
+    headers = ["id", "first_name", "last_name", "country", "email", "gender", "dob", "blood_group", "state"]
+
+    if (os.path.exists(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics")):
+        pass
+    else:
+        os.makedirs(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics")
+
+    base_path = r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics"
+    filename = "studentinfo_cs384_names_split.csv"
+    for row in lines:
+        temp = row["full_name"].split()
+        row["first_name"] = temp[0]
+        temp = temp[1:]
+        row["last_name"] = " ".join(temp)
+        row.pop("full_name", None)
+        if (os.path.exists(os.path.join(base_path, filename))):
+            with open(os.path.join(base_path, filename), "a+") as file:
+                writer = csv.DictWriter(file, fieldnames=headers)
+                writer.writerow(row)
+        else:
+            with open(os.path.join(base_path, filename), "a+") as file:
+                writer = csv.DictWriter(file, fieldnames=headers)
+                writer.writeheader()
+                writer.writerow(row)
+
+    # sorting
+
+    with open(os.path.join(r"C:\Users\admin\CS384_1801CB18\Assignment\3analytics",
+                           "studentinfo_cs384_names_split.csv")) as f:
+        reader = csv.DictReader(f)
+        lines = [dict(row) for row in reader]
+    headers = ["id", "first_name", "last_name", "country", "email", "gender", "dob", "blood_group", "state"]
+
+    if (os.path.exists(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics")):
+        pass
+    else:
+        os.makedirs(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics")
+
+    base_path = r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics"
+    filename = "studentinfo_cs384_names_split_sorted_first_name.csv"
+
+    lines = sorted(lines, key=lambda temp: temp["first_name"])
+
+    for row in lines:
+        if (os.path.exists(os.path.join(base_path, filename))):
+            with open(os.path.join(base_path, filename), "a+") as file:
+                writer = csv.DictWriter(file, fieldnames=headers)
+                writer.writerow(row)
+        else:
+            with open(os.path.join(base_path, filename), "a+") as file:
+                writer = csv.DictWriter(file, fieldnames=headers)
+                writer.writeheader()
+                writer.writerow(row)
     pass
