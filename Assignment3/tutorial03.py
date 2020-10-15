@@ -167,11 +167,54 @@ def country():
                     writer = csv.DictWriter(file, fieldnames=header)
                     writer.writeheader()
                     writer.writerow(row)
-    
+
 
 
 def email_domain_extract():
     # Read csv and process
+    if (os.path.exists(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics")):
+        shutil.rmtree(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics")
+    else:
+        pass
+    with open('studentinfo_cs384.csv') as f:
+        reader = csv.DictReader(f)
+        lines = [dict(row) for row in reader]
+
+    if (os.path.exists(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics/email_domain")):
+        pass
+    else:
+        os.makedirs(r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics/email_domain")
+
+    base_path = r"C:\Users\admin\CS384_1801CB18\Assignment3\analytics/email_domain"
+    for row in lines:
+        einfo = row["email"].split("@")
+        einfo = einfo[1].split(".")
+        einfo = einfo[0]
+        if (einfo != ""):
+            if (os.path.exists(os.path.join(base_path, einfo.lower() + ".csv"))):
+                with open(os.path.join(base_path, einfo.lower() + ".csv"), "a+") as file:
+                    header = ["id", "full_name", "country", "email", "gender", "dob", "blood_group", "state"]
+                    writer = csv.DictWriter(file, fieldnames=header)
+                    writer.writerow(row)
+            else:
+                with open(os.path.join(base_path, einfo.lower() + ".csv"), "a+") as file:
+                    header = ["id", "full_name", "country", "email", "gender", "dob", "blood_group", "state"]
+                    writer = csv.DictWriter(file, fieldnames=header)
+                    writer.writeheader()
+                    writer.writerow(row)
+        else:
+            ginfo = "misc"
+            if (os.path.exists(os.path.join(base_path, einfo.lower() + ".csv"))):
+                with open(os.path.join(base_path, binfo.lower() + ".csv"), "a+") as file:
+                    header = ["id", "full_name", "country", "email", "gender", "dob", "blood_group", "state"]
+                    writer = csv.DictWriter(file, fieldnames=header)
+                    writer.writerow(row)
+            else:
+                with open(os.path.join(base_path, einfo.lower() + ".csv"), "a+") as file:
+                    header = ["id", "full_name", "country", "email", "gender", "dob", "blood_group", "state"]
+                    writer = csv.DictWriter(file, fieldnames=header)
+                    writer.writeheader()
+                    writer.writerow(row)
     pass
 
 
