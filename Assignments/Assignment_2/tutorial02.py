@@ -1,5 +1,5 @@
 # All decimal 3 places
-
+from math import sqrt
 def sorting(first_list):
     # Sorting Logic
     for i in range(len(first_list)):
@@ -26,10 +26,10 @@ def kurtosis(first_list):
 
         sigma = standard_deviation(first_list)
 
-        mean = mean(first_list)
+        mean_x= mean(first_list)
         kurtosis_sum = 0
         for x in first_list:
-            kurtosis_sum += ((x - mean) / sigma) ** 4
+            kurtosis_sum += ((x - mean_x) / sigma) ** 4
 
         kurtosis_value = kurtosis_sum / len(first_list)
 
@@ -43,10 +43,10 @@ def skewness(first_list):
             return 0
     else:
         sigma = standard_deviation(first_list)
-        mean = mean(first_list)
+        mean_y= mean(first_list)
         skew_sum = 0
         for x in first_list:
-            skew_sum += ((x - mean) / sigma) ** 3
+            skew_sum += ((x - mean_y) / sigma) ** 3
         skewness_value = skew_sum / len(first_list)
 
         return skewness_value
@@ -86,13 +86,12 @@ def variance(first_list):
 
 def median(first_list):
     # median Logic
-
+    sorted_list = sorting(first_list)
+    n = len(sorted_list)
     for i in range(n):
         if isinstance(sorted_list[i], str):
             return 0
     else:
-        sorted_list = sorting(first_list)
-        n = len(sorted_list)
         if len(sorted_list) % 2 == 1:
             median_value = sorted_list[len(sorted_list) // 2]
         else:

@@ -1,12 +1,12 @@
 import tutorial01 as A1
 
-<<<<<<< HEAD
+
 actual_answers = [9, 12, 80, 5, [2, 6, 18, 54, 162],[1/5,1/4,1/3,1/2,1,0,-1,-1/2,-1/3,-1/4],0]
 student_answers = []
-=======
+
 actual_answers = [9, 12, 28, 5]
 student_answers = [9, 12, 28, 5]
->>>>>>> f806065adaaef99cd03329d4e91dc31f09086b22
+
 
 test_case_1 = A1.add(4, 5)
 student_answers.append(test_case_1)
