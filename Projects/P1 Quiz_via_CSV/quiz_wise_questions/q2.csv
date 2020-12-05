@@ -1,0 +1,11 @@
+ques_no,question,option1,option2,option3,option4,correct_option,marks_correct_ans,marks_wrong_ans,compulsory,time=20m
+1,what is the capital city of sri lanka,colombo,kandy,galle,jaffna,1,5,-1,n,
+2,15+24,12,39,49,38,2,4,-1,y,
+3,capital of Italy,Paris,Rome,Amhara,London,2,8,-2,n,
+4,1 cubic centimeter = __litre,1,0.001,10,0.01,2,4,-1,y,
+5,S.I Units of force,Newton,Joule,Pascal,metre,1,4,-2,y,
+6,The smallest Planet in Solar System,Saturn,Earth,Venus,mercury,4,4,-1,n,
+7,Refractive index of water,1.33,2.39,1.39,1.52,1,4,-1,y,
+8,1 atm = __ bar,2.0265,3.03975,1.01325,4.053,3,4,-1,n,
+9,value of 6!(factorial),720,760,700,740,1,5,-1,y,
+10,Which Country is the sugar bowl of the world,Argentina,Brasil,Cuba,Mexico,3,4,-1,n,
