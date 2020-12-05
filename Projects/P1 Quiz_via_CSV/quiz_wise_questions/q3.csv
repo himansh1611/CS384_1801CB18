@@ -1,0 +1,11 @@
+ques_no,question,option1,option2,option3,option4,correct_option,marks_correct_ans,marks_wrong_ans,compulsory,time=20m
+1,What is the largest country in the world,china,India,Russia,Argentina,3,5,-1,n,
+2,5*25,126,125,135,120,2,4,-1,y,
+3,capital of Germany,Warsaw,vienna,Berlin,Helsinki,3,8,-2,n,
+4,1 kg/cubic metre = __1g/cubic centi metre,1,1000,10,100,2,4,-1,y,
+5,S.I Units of power,Newton,Joule,Pascal,watt,4,4,-2,y,
+6,The sixth Planet from sun in Solar System,Saturn,Earth,Venus,uranus,1,4,-1,n,
+7,what is the speed of sound,230 m/s,343 m/s,420 m/s,300 m/s,2,4,-1,y,
+8,1 mm HG = __ mm water,27.19,13.6,40.79,18.56,2,4,-1,n,
+9,value of 7!(factorial),5000,5400,5040,5004,3,5,-1,y,
+10,what is the deepest lake,lake Vostok,lake Nyasa,lake ysyk,lake Baikal,4,4,-1,n,
