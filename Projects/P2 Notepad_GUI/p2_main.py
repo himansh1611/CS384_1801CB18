@@ -1,4 +1,4 @@
-[2:15 AM, 12/6/2020] Raghav IITP Chem: import tkinter as tk
+import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog, messagebox
 from tkinter.messagebox import showinfo
@@ -34,7 +34,7 @@ file.add_command(label="New", compound=tk.LEFT,
 def Open_file(event=None):
     global url
     url = filedialog.askopenfilename(initialdir=os.getcwd(
-    ), title="select file", filetypes=(("Text file", ".txt"), ("All files", ".*")))
+    ), title="select file", filetypes=(("Text file", "*.txt"), ("All files", "*.*")))
     try:
         with open(url, "r") as for_read:
             text_editor.delete(1.0, tk.END)
@@ -48,7 +48,10 @@ def Open_file(event=None):
 
 file.add_command(label="Open", compound=tk.LEFT,
                  accelerator="Ctrl+o", command=Open_file)
-[2:28 AM, 12/6/2020] Raghav IITP Chem: def save_file(event=None):
+
+
+
+def save_file(event=None):
     global url
     try:
         if url:
@@ -57,7 +60,7 @@ file.add_command(label="Open", compound=tk.LEFT,
                 for_read.write(content)
         else:
             url = filedialog.asksaveasfile(mode="w", defaultextension="txt", filetypes=(
-                ("Text file", ".txt"), ("All files", ".*")))
+                ("Text file", "*.txt"), ("All files", "*.*")))
             content_2 = text_editor.get(1.0, tk.END)
             url.write(content_2)
             url.close()
@@ -74,7 +77,7 @@ def Save_as_file(event=None):
     try:
         content = text_editor.get(1.0, tk.END)
         url = filedialog.asksaveasfile(mode="w", defaultextension="txt", filetypes=(
-            ("Text file", ".txt"), ("All files", ".*")))
+            ("Text file", "*.txt"), ("All files", "*.*")))
         url.write(content)
         url.close()
     except:
