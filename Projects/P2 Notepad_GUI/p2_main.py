@@ -48,3 +48,41 @@ def Open_file(event=None):
 
 file.add_command(label="Open", compound=tk.LEFT,
                  accelerator="Ctrl+o", command=Open_file)
+
+
+
+def save_file(event=None):
+    global url
+    try:
+        if url:
+            content = str(text_editor.get(1.0, tk.END))
+            with open(url, "w", encoding="utf-8") as for_read:
+                for_read.write(content)
+        else:
+            url = filedialog.asksaveasfile(mode="w", defaultextension="txt", filetypes=(
+                ("Text file", "*.txt"), ("All files", "*.*")))
+            content_2 = text_editor.get(1.0, tk.END)
+            url.write(content_2)
+            url.close()
+    except:
+        return
+
+
+file.add_command(label="Save", compound=tk.LEFT,
+                 accelerator="Ctrl+s", command=save_file)
+
+
+def Save_as_file(event=None):
+    global url
+    try:
+        content = text_editor.get(1.0, tk.END)
+        url = filedialog.asksaveasfile(mode="w", defaultextension="txt", filetypes=(
+            ("Text file", "*.txt"), ("All files", "*.*")))
+        url.write(content)
+        url.close()
+    except:
+        return
+
+
+file.add_command(label="Save as", compound=tk.LEFT,
+                 accelerator="Ctrl+sft+s", command=Save_as_file)
