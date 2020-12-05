@@ -440,3 +440,58 @@ def quizprocedure(quiz_num, username):
         quiz_res("q" + quiz_num + "_0" + str(username) + ".csv", quiz_num, username)
 
     return None
+
+def login_procedure():
+    i = 0
+    while i < 5:
+        user_name = input("Enter the username:	")
+        pass_word = input("Enter the password:	")
+        with sqlite3.connect(db_path) as db:
+            cursor = db.cursor()
+        cursor.execute("SELECT * FROM 'project1_registration' ")
+        find_user = cursor.fetchall()
+        for row in find_user:
+            username = row[0]
+            password = row[1]
+            if check_password(password, pass_word):
+                i = 8
+                print(
+                    """Enter the quiz_number you wish to take:
+								1.q1
+								2.q2
+								3.q3							
+					"""
+                )
+                quiz_num = str(input("Your Choice:	"))
+                if quiz_num != "1" or "2" or "3":
+                    print("Please try again")
+                    quiz_num = str(input("your Choice:	"))
+                quizprocedure(quiz_num, user_name)
+                break
+        else:
+            print("username and password are not recognized")
+            again = input("Do you want to try again? (y/n):	")
+            if again.lower() == "n":
+                print("Goodbye!")
+                time.sleep(1)
+                break
+            elif again.lower() == "y":
+                login_procedure()
+            else:
+                break
+    return None
+
+
+def main_menu():
+    print("""Enter Your Choice: 1.Student Registration 2.Login to take quiz""")
+    user_selection = int(input("Your Choice:	"))
+    if user_selection == 1:
+        new_student_registration()
+    elif user_selection == 2:
+        login_procedure()
+    else:
+        print("Picked invalid choice")
+        main_menu()
+
+
+main_menu()
