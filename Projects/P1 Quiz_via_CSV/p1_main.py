@@ -72,3 +72,88 @@ def open_reqcsv(input_file_path):
         for row in reader:
             data_list.append(row)
     return data_list
+def create_db_file():
+    try:
+        with sqlite3.connect(db_path) as db:
+            cursor = db.cursor()
+
+        cursor.execute(
+            """
+		CREATE TABLE IF NOT EXISTS project1_registration
+		(
+			username	TEXT PRIMARY KEY NOT NULL ,
+			password	TEXT NOT NULL ,
+			name		CHAR(50) NOT NULL ,
+			whatsapp_number		INT(10) NOT NULL
+		)			"""
+        )
+
+        cursor.execute(
+            """
+		CREATE TABLE IF NOT EXISTS project1_marks
+		(
+			roll	VARCHAR(20) NOT NULL,
+			quiz_num	INTEGER(1) NOT NULL,
+			total_marks		INTEGER NOT NULL
+		)			"""
+        )
+        db.commit()
+
+    except Error as e:
+        print(e)
+def new_student_registration():
+    create_db_file()
+    q = 0
+    while q == 0:
+        username = input("Enter your rollNumber:	")
+        while len(username) < 7:
+            print("Please Try again")
+            username = input("Enter your rollNumber:	")
+        with sqlite3.connect(db_path) as db:
+            cursor = db.cursor()
+        find_user = "SELECT * FROM project1_registration WHERE username = ?"
+        cursor.execute(find_user, [(username)])
+
+        if cursor.fetchall():
+            print("RollNumber already registered")
+        else:
+            q = 1
+
+    name = input("Enter your Name(min_3 digits):	")
+    while len(name) < 3:
+        print("Please Try again")
+        name = input("Enter your Name:	")
+
+    whatsapp_number = input("Enter your Whatsapp_Number(10 digits):	")
+    while len(whatsapp_number) != 10:
+        print("Please Try again")
+        whatsapp_number = input("Enter your Whatsapp_Number:	")
+
+    password = input("Enter your password(min_8 digits):	")
+    while len(password) < 8:
+        print("Please Try again")
+        password = input("Enter your password:	")
+
+    password = create_hash_pass(password)
+    password_1 = input("Please Enter your password again:	")
+    while check_password(password, password_1) != True:
+        print("Your password didn't match,Try again")
+        password = input("Enter your password:	")
+        password = create_hash_pass(password)
+        password_1 = input("Please Enter your password again:	")
+
+    with sqlite3.connect("project1_quiz_cs384.db") as db:
+        cursor = db.cursor()
+    insertData = """INSERT INTO project1_registration(username,password,name,whatsapp_number)
+	VALUES(?,?,?,?)"""
+    cursor.execute(insertData, [(username), (password), (name), (whatsapp_number)])
+    db.commit()
+
+    choice = input("Would you like to continue to take test?(y/n):	")
+    if choice.lower() == "y":
+        login_procedure()
+    else:
+        print("Goodbye!")
+        time.sleep(1)
+
+    return None
